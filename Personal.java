@@ -1,14 +1,19 @@
-import java.util.ArrayList;
+//import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Personal implements Iterable<User> {
 
-    private List<User> users = new ArrayList<>();
+    private List<User> users = new LinkedList<>();
 
     public Personal addUser(User user){
         users.add(user);
         return this;
+    }
+    
+    public int size(){
+        return users.size();
     }
 
     @Override
@@ -22,10 +27,14 @@ public class Personal implements Iterable<User> {
 
             @Override
             public User next() {
-                return users.get(index++);
-            }
-            
+                return users.get(index++); // ++ компилятор обрабатывает после (!!!) того, как вернет значение
+            }            
         };
     }
-    
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+
 }
